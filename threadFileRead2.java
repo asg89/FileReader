@@ -1,12 +1,15 @@
+
+
 import java.util.*;
 import java.io.*;
 class RunnableDemo implements Runnable {
    private Thread t;
    private String threadName;
-   public static String f1;
+   public static String f;
    public static String f2;
    String text = "";
    public static  int R1F = 0;
+   
    
    RunnableDemo( String name) {
       threadName = name;
@@ -41,6 +44,14 @@ class RunnableDemo implements Runnable {
 		RunnableDemo.R1F=1;
 		if(RunnableDemo.R1F==1){
 			System.out.println(text);
+			String[] arr = text.split(" "); 
+			for ( String ss : arr) {
+			       System.out.println(ss);
+			  }
+			//System.out.println(text);
+			Map<String,Integer>words1=new HashMap<String ,Integer>();
+		       CountEachWordsDemo.countEachWords(threadName,words1);
+		   	   System.out.println(words1);
 		}
 		//System.out.print(text);  
 		} catch (IOException e) {
@@ -106,6 +117,29 @@ class TestThread {
    } 
    */  
 }
+ class CountEachWordsDemo{
+	
+	static void countEachWords(String filename,Map<String ,Integer>words) throws FileNotFoundException{
+	Scanner file=new Scanner(new File(filename));
+	while(file.hasNext()){
+		String word=file.next().replaceAll("[^a-zA-Z ]", "").toLowerCase();
+		//word123[]=file.next().replaceAll("[^a-zA-Z ]", "").toLowerCase().split("\\s+");   or replaceAll("\\p{P}", "")
+		Integer count=words.get(word);
+		if(count !=null)
+			count++;
+		else
+			count=1;
+	    words.put(word,count);
+        }
+    file.close();
+	}
+/*	public static void main(String[] args) throws FileNotFoundException{
+		Map<String,Integer>words=new HashMap<String ,Integer>();
+		countEachWords("res2.txt",words);
+		System.out.println(words);
+	}
+	*/
+}
 public class threadFileRead2{
 	
 
@@ -129,6 +163,11 @@ public class threadFileRead2{
     */
     RunnableDemo R2 = new RunnableDemo( f2);
     R2.start();
+   /* 
+	Map<String,Integer>words2=new HashMap<String ,Integer>();
+    CountEachWordsDemo.countEachWords(f2,words2);
+	System.out.println(words2);
+    */
     /*
     fin1.close();
     fin2.close();
