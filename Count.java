@@ -23,6 +23,7 @@ class RunnableDemo implements Runnable {
 	   public  void run() {
 		    FileReader fr = null;
 		    BufferedReader br =null;
+		    FileOutputStream fout=null;
 
 		     String [] stringArray;
 		     //int countLine = 0;
@@ -40,6 +41,7 @@ class RunnableDemo implements Runnable {
 		     
 		        fr = new FileReader(fileName);
 		        br = new BufferedReader(fr);
+		        fout=new FileOutputStream(new File("res.txt"),true);
 		        while((s = br.readLine()) != null){
 		            stringLine = stringLine + s;
 		            //System.out.println(s);
@@ -47,6 +49,8 @@ class RunnableDemo implements Runnable {
 		           // countLine ++;
 		           // System.out.println(countLine);
 		        }
+		        fout.write(stringLine.getBytes());
+		        fout.close();
 
 
 
