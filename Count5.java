@@ -1,6 +1,4 @@
 import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 
@@ -123,9 +121,9 @@ public class Count4 {
         //System.out.println("Thread Completed");
        
        System.out.println("Words in increasing order is");
-       boolean b1=(R1.isAlive());
-       boolean b2=(R2.isAlive());
-        FileReader fr = null;
+       
+
+            FileReader fr = null;
 	    BufferedReader br =null;
 	         
 	   fr = new FileReader("res.txt");
