@@ -149,6 +149,7 @@ public class Count4 {
                     count[i]++;
                     for (int j2 = j; j2 < arrayLength-1; j2++) 
                         stringArray[j2] = stringArray[j2+1];
+			j=j-1;
                         arrayLength = arrayLength - 1;
                     }
                     //System.out.println(wordname);
